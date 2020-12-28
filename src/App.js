@@ -1,40 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import ProductList from "./component/ProductList/ProductList";
 import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
-
-
+import { CartProvider } from "./Context/CartContext"
 
 import './App.css';
 
-class App extends Component {
-
-  state = {
-    loading: true,
-    cartqty: 0,
-    productlist: []
-  };
-
-  handleAddtoCart = product => {
-    console.log(product)
-    const nqty = this.state.cartqty + product.id;
-    this.setState({ cartqty: nqty });
-
-  };
-
-
-  render() {
-
-    return (
-      <div className="App" >
-        <Header></Header>
+const App = (props) => {
+  return (
+    <div className="App" >
+      <CartProvider>
+        <Header ></Header>
         <ProductList></ProductList>
         <Footer></Footer>
+      </CartProvider>
+    </div >
 
-      </div >
-
-    );
-  }
-
+  );
 }
+
 export default App;
