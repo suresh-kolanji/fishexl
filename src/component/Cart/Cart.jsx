@@ -66,7 +66,8 @@ const Cart = (props) => {
                   </Col>
                   <Col md={{ span: 3, offset: 3 }}>
                     {Cart.map((datum) => datum.product.constprice).reduce(
-                      (a, b) => a + b
+                      (a, b) => a + b,
+                      0
                     )}
                   </Col>
                 </Row>
