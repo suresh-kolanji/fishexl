@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductList from "./component/ProductList/ProductList";
 import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
-import { CartProvider } from "./Context/CartContext"
-
+import { CartProvider, CartContext } from "./Context/CartContext"
+import CartPage from "./component/Cart/Cart";
 import './App.css';
 
 const App = (props) => {
@@ -13,6 +13,7 @@ const App = (props) => {
         <Header ></Header>
         <ProductList></ProductList>
         <Footer></Footer>
+        <CartPage></CartPage>
       </CartProvider>
     </div >
 

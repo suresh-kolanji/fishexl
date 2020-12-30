@@ -5,10 +5,11 @@ import axios from "axios";
 import { CartContext } from "./../../Context/CartContext";
 const ProductList = (props) => {
   //ProductList.contextType = CartContext;
-  const [Cart, setCart] = useContext(CartContext);
+  const [Cart, setCart, addToCart] = useContext(CartContext);
   const [Productlist, setProductlist] = useState([]);
-  const addToCart = (e) => {
+  const addTssoCart = (product) => {
     //e.preventDefault();
+    console.log(product.id);
     setCart((previousState) => [...previousState, { id: 1, qty: 5 }]);
   };
   useEffect(() => {
@@ -41,7 +42,10 @@ const ProductList = (props) => {
                     </cite>
                   </small>
                 </blockquote>
-                <Button variant="warning" onClick={addToCart}>
+                <Button
+                  variant="warning"
+                  onClick={addToCart.bind(this, product)}
+                >
                   Add to Cart
                 </Button>
               </Card.Body>
