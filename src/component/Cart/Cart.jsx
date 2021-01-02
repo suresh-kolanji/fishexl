@@ -4,13 +4,15 @@ import {
   Modal,
   Card,
   ListGroup,
-  CardColumns,
+  Badge,
   Row,
   Col,
   Container,
   blockquote,
 } from "react-bootstrap";
 import { CartContext } from "./../../Context/CartContext";
+import delicon from "./../images/delete.svg";
+import Checkout from "./Checkout";
 const Cart = (props) => {
   const [
     Cart,
@@ -51,6 +53,11 @@ const Cart = (props) => {
                         <Col>{Ca.product.name}</Col>
                         <Col>{Ca.product.description}</Col>
                         <Col>{Ca.product.constprice}</Col>
+                        <Col>
+                          <Button variant="outline-danger">
+                            <img alt="Cart Icon" src={delicon} width={15}></img>
+                          </Button>
+                        </Col>
                       </Row>
                     </Container>
                   </ListGroup.Item>
@@ -60,20 +67,23 @@ const Cart = (props) => {
               <Container fluid>
                 <Row>
                   <Col>
-                    <Button outline-primary onClick={() => setCartShow(false)}>
-                      checkout
-                    </Button>
+                    <Badge variant="info" onClick={() => setCartShow(false)}>
+                      Total
+                    </Badge>
                   </Col>
                   <Col md={{ span: 3, offset: 3 }}>
-                    {Cart.map((datum) => datum.product.constprice).reduce(
-                      (a, b) => a + b,
-                      0
-                    )}
+                    <Badge pill variant="info">
+                      {Cart.map((datum) => datum.product.constprice).reduce(
+                        (a, b) => a + b,
+                        0
+                      )}
+                    </Badge>
                   </Col>
                 </Row>
               </Container>
             </ListGroup.Item>
           </ListGroup>
+          <Checkout></Checkout>
         </p>
       </Modal.Body>
     </Modal>

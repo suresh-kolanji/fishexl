@@ -1,5 +1,13 @@
 import React, { Component, useContext } from "react";
-import { Navbar, Nav, Form, FormControl, Button, Badge } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  Badge,
+  Container,
+} from "react-bootstrap";
 import logo from "./../images/logo.png";
 import carticon from "./../images/shopping-cart.svg";
 import { CartContext } from "./../../Context/CartContext";
@@ -15,7 +23,7 @@ const Header = (props) => {
   ] = useContext(CartContext);
 
   return (
-    <React.Fragment>
+    <Container>
       <Navbar
         sticky="top"
         bg="light"
@@ -32,16 +40,14 @@ const Header = (props) => {
           </Nav.Link>
         </Nav>
         <Form inline>
-          <Button variant="warning" onClick={() => setCartShow(true)}>
+          <Button variant="outline-warning" onClick={() => setCartShow(true)}>
             <img alt="Cart Icon" src={carticon} width={30}></img>
             <Badge variant="light">{Cart.length}</Badge>
           </Button>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-primary">Search</Button>
         </Form>
       </Navbar>
       <CartPage></CartPage>
-    </React.Fragment>
+    </Container>
   );
 };
 
