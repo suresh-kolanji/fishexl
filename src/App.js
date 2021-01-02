@@ -6,18 +6,30 @@ import { CartProvider, CartContext } from "./Context/CartContext"
 import CartPage from "./component/Cart/Cart";
 import Banner from "./component/Banner/Banner";
 import './App.css';
+import {
+  Button,
+  Modal,
+  Card,
+  ListGroup,
+  Badge,
+  Row,
+  Col,
+  Container,
+  blockquote,
+} from "react-bootstrap";
 
 const App = (props) => {
   return (
     <div className="App" >
-      <CartProvider>
-        <Header ></Header>
-        <Banner></Banner>
-        <br></br>
-        <ProductList></ProductList>
-        <Footer></Footer>
-        <CartPage></CartPage>
-      </CartProvider>
+      <Container>
+        <CartProvider>
+          <Header ></Header>
+          <Banner></Banner>
+          <br></br>
+          <ProductList></ProductList>
+          <Footer></Footer>
+        </CartProvider>
+      </Container>
     </div >
 
   );

@@ -23,7 +23,7 @@ const Header = (props) => {
   ] = useContext(CartContext);
 
   return (
-    <Container>
+    <React.Fragment>
       <Navbar
         sticky="top"
         bg="light"
@@ -47,7 +47,7 @@ const Header = (props) => {
         </Form>
       </Navbar>
       <CartPage></CartPage>
-    </Container>
+    </React.Fragment>
   );
 };
 

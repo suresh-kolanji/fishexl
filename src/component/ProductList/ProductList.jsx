@@ -32,35 +32,33 @@ const ProductList = (props) => {
   }, []);
 
   return (
-    <Container>
-      <CardColumns>
-        {Productlist.length
-          ? Productlist.map((product) => (
-              <Card>
-                <Card.Img variant="top" src={img5} />
-                <Card.Body>
-                  <Card.Title>{product.name}</Card.Title>
-                  <Card.Text>{product.description}</Card.Text>
-                  <blockquote className="blockquote mb-0 card-body">
-                    <small className="text-muted">
-                      kg{" "}
-                      <cite title="Source Title">
-                        {product.constprice} &#x20B9;
-                      </cite>
-                    </small>
-                  </blockquote>
-                  <Button
-                    variant="warning"
-                    onClick={addToCart.bind(this, product)}
-                  >
-                    Add to Cart
-                  </Button>
-                </Card.Body>
-              </Card>
-            ))
-          : null}
-      </CardColumns>
-    </Container>
+    <CardColumns>
+      {Productlist.length
+        ? Productlist.map((product) => (
+            <Card>
+              <Card.Img variant="top" src={img5} />
+              <Card.Body>
+                <Card.Title>{product.name}</Card.Title>
+                <Card.Text>{product.description}</Card.Text>
+                <blockquote className="blockquote mb-0 card-body">
+                  <small className="text-muted">
+                    kg{" "}
+                    <cite title="Source Title">
+                      {product.constprice} &#x20B9;
+                    </cite>
+                  </small>
+                </blockquote>
+                <Button
+                  variant="warning"
+                  onClick={addToCart.bind(this, product)}
+                >
+                  Add to Cart
+                </Button>
+              </Card.Body>
+            </Card>
+          ))
+        : null}
+    </CardColumns>
   );
 };
 
