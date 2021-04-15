@@ -1,65 +1,93 @@
-import React, { useState } from "react";
-import {
-  Carousel,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-  Col,
-  Container,
-} from "react-bootstrap";
+import React, { useEffect, useState, useContext } from "react";
+import { CartContext } from "./../../Context/CartContext";
+import { Form, Button, Col } from "react-bootstrap";
 
-export const Checkout = (params) => {
+export const Checkout = (props) => {
+  const [
+    Cart,
+    setCart,
+    addToCart,
+    removefromcart,
+    CartShow,
+    setCartShow,
+    submitcart,
+    Checkout,
+    setCheckout,
+  ] = useContext(CartContext);
+  console.log("----Default -Value of Checkout.----", Checkout);
+  const handleChange = (e) => {
+    console.log(e.target.value);
+
+    setCheckout({
+      ...Checkout,
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
   return (
     <div>
       <Form>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              onChange={handleChange}
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              name="username"
+              placeholder="Name"
+              onChange={handleChange}
+            />
           </Form.Group>
         </Form.Row>
 
         <Form.Group controlId="formGridAddress1">
           <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
+          <Form.Control
+            placeholder="1234 Main St"
+            name="address1"
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Form.Group controlId="formGridAddress2">
           <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
+          <Form.Control
+            placeholder="Apartment, studio, or floor"
+            name="address2"
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Form.Row>
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>City</Form.Label>
-            <Form.Control />
+            <Form.Control name="city" onChange={handleChange} />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>State</Form.Label>
-            <Form.Control as="select" defaultValue="Choose...">
-              <option>Choose...</option>
-              <option>...</option>
-            </Form.Control>
+            <Form.Control type="State" placeholder="Tamil Nadu" readOnly />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">
             <Form.Label>Zip</Form.Label>
-            <Form.Control />
+            <Form.Control name="zipCode" onChange={handleChange} />
           </Form.Group>
         </Form.Row>
 
-        <Form.Group id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          // type="submit"
+          onClick={submitcart.bind(this, "m,n")}
+          submitcart
+        >
           Submit
         </Button>
       </Form>

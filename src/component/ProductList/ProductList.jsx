@@ -1,11 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import {
-  Button,
-  Card,
-  CardColumns,
-  blockquote,
-  Container,
-} from "react-bootstrap";
+import { Button, Card, CardColumns, blockquote } from "react-bootstrap";
 import img5 from "././5.jpg";
 import axios from "axios";
 import { CartContext } from "./../../Context/CartContext";
@@ -13,11 +7,7 @@ const ProductList = (props) => {
   //ProductList.contextType = CartContext;
   const [Cart, setCart, addToCart] = useContext(CartContext);
   const [Productlist, setProductlist] = useState([]);
-  const addTssoCart = (product) => {
-    //e.preventDefault();
-    console.log(product.id);
-    setCart((previousState) => [...previousState, { id: 1, qty: 5 }]);
-  };
+
   useEffect(() => {
     axios
       .get("https://fishserv.herokuapp.com/productlist")
