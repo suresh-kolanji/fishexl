@@ -14,7 +14,7 @@ export const Checkout = (props) => {
     Checkout,
     setCheckout,
   ] = useContext(CartContext);
-  console.log("----Default -Value of Checkout.----", Checkout);
+
   const handleChange = (e) => {
     console.log(e.target.value);
 
@@ -48,7 +48,7 @@ export const Checkout = (props) => {
         </Form.Row>
 
         <Form.Group controlId="formGridAddress1">
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Address 1</Form.Label>
           <Form.Control
             placeholder="1234 Main St"
             name="address1"
@@ -65,6 +65,15 @@ export const Checkout = (props) => {
           />
         </Form.Group>
 
+        <Form.Group controlId="formGridPhoneNumber">
+          <Form.Label>Phone Number</Form.Label>
+          <Form.Control
+            placeholder="Phone Number"
+            name="phNumber"
+            onChange={handleChange}
+          />
+        </Form.Group>
+
         <Form.Row>
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>City</Form.Label>
@@ -73,7 +82,12 @@ export const Checkout = (props) => {
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>State</Form.Label>
-            <Form.Control type="State" placeholder="Tamil Nadu" readOnly />
+            <Form.Control
+              type="State"
+              name="state"
+              placeholder="Tamil Nadu"
+              readOnly
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">

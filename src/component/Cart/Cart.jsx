@@ -2,13 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import {
   Button,
   Modal,
-  Card,
   ListGroup,
   Badge,
   Row,
   Col,
   Container,
-  blockquote,
 } from "react-bootstrap";
 import { CartContext } from "./../../Context/CartContext";
 import delicon from "./../images/delete.svg";
@@ -23,8 +21,6 @@ const Cart = (props) => {
     setCartShow,
     submitcart,
   ] = useContext(CartContext);
-  console.log("----Default -Value of modal.----", CartShow);
-  console.log("----Default -Value of Cart.----", Cart);
 
   return (
     <Modal

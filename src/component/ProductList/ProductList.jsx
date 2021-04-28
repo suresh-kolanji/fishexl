@@ -4,7 +4,6 @@ import img5 from "././5.jpg";
 import axios from "axios";
 import { CartContext } from "./../../Context/CartContext";
 const ProductList = (props) => {
-  //ProductList.contextType = CartContext;
   const [Cart, setCart, addToCart] = useContext(CartContext);
   const [Productlist, setProductlist] = useState([]);
 
@@ -12,20 +11,18 @@ const ProductList = (props) => {
     axios
       .get("https://fishserv.herokuapp.com/productlist")
       .then((res) => {
-        console.log(res);
         setProductlist(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log("Hook called");
   }, []);
 
   return (
     <CardColumns>
       {Productlist.length
         ? Productlist.map((product) => (
-            <Card>
+            <Card key={product.id}>
               <Card.Img variant="top" src={img5} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>

@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Carousel,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-  Badge,
-  Container,
-} from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 
 import ban1 from "./../images/Banner1.jpg";
 import ban4 from "./../images/Banner1.jpg";

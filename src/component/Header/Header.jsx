@@ -1,17 +1,10 @@
 import React, { Component, useContext } from "react";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-  Badge,
-  Container,
-} from "react-bootstrap";
+import { Navbar, Nav, Form, Button, Badge } from "react-bootstrap";
 import logo from "./../images/logo.png";
 import carticon from "./../images/shopping-cart.svg";
 import { CartContext } from "./../../Context/CartContext";
 import CartPage from "./../Cart/Cart";
+import Confirmation from "./../Checkout/ConfirmCart";
 const Header = (props) => {
   const [
     Cart,
@@ -47,6 +40,7 @@ const Header = (props) => {
         </Form>
       </Navbar>
       <CartPage></CartPage>
+      <Confirmation></Confirmation>
     </React.Fragment>
   );
 };
