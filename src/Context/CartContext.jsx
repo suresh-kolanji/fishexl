@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 export const CartContext = createContext();
 
@@ -8,6 +8,7 @@ export const CartProvider = (props) => {
   const [ConfirmCartShow, setConfirmCartShow] = useState(false);
   const [Checkout, setCheckout] = useState([], "tamilNadu");
   const [Items, setItems] = useState([]);
+  const [OrderDetail, setOrderDetail] = useState([]);
   const addToCart = (product) => {
     console.log("------add to cart -----", product);
     setCart((previousState) => [
@@ -15,21 +16,31 @@ export const CartProvider = (props) => {
       { id: product.id, qty: 5, product: product },
     ]);
   };
+
   const removefromcart = (product) => {
     const lCart = Cart.filter((item) => item.id !== product.id);
     setCart(lCart);
   };
-  const submitcart = (e) => {
+
+  const resetCart = (ord) => {
+    console.log("invoked");
+    setConfirmCartShow(false);
+  };
+
+  const Submitcart = (e) => {
     setCartShow(false);
-    setConfirmCartShow(true);
+
     var i;
     for (i = 0; i < Cart.length; i++) {
-      const st = [];
-      st.push("ItemID", Cart[i].id);
-      st.push("ItemName", Cart[i].product.name);
-      st.push("Qty", Cart[i].qty);
-      st.push("ItemPrice", Cart[i].product.constprice);
-      st.push("LinePrice", Cart[i].product.constprice);
+      const st = {
+        ItemID: Cart[i].id,
+        ItemName: Cart[i].product.name,
+        ItemDesc: Cart[i].product.description,
+        Qty: Cart[i].qty,
+        ItemPrice: Cart[i].product.constprice,
+        LinePrice: Cart[i].product.constprice,
+      };
+
       Items.push(st);
     }
     const formdata = {
@@ -47,35 +58,15 @@ export const CartProvider = (props) => {
       Name: Checkout.username,
       OrderItems: Items,
     };
-    console.log("...formto save...", formdata);
-    const header = {
-      "Content-Type": "multipart/form-data",
-      "Access-Control-Allow-Origin": "*",
-    };
+    console.log("...formto save...", JSON.stringify(formdata));
     axios
-      .post(
-        "https://fishord.herokuapp.com/saveorder",
-        {
-          crossDomain: false,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "access-control-allow-origin, access-control-allow-headers",
-
-            Accept: "application/json",
-
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            "Content-Type": "multipart/form-data",
-            //"Access-Control-Allow-Headers":
-            //"Origin, X-Requested-With, Content-Type, Accept, Authorization",
-
-            withCredentials: false,
-          },
-        },
-        formdata
-      )
-      .then((response) => this.setState({ formdata: response.data }));
-    console.log("...formto save...", formdata);
+      .post("http://localhost:8080/saveorder", JSON.stringify(formdata))
+      .then((response) => {
+        OrderDetail.push(response.data);
+        setConfirmCartShow(true);
+        setCart([]);
+      });
+    console.log("outside", OrderDetail);
   };
 
   return (
@@ -87,11 +78,14 @@ export const CartProvider = (props) => {
         removefromcart,
         CartShow,
         setCartShow,
-        submitcart,
+        Submitcart,
         Checkout,
         setCheckout,
         ConfirmCartShow,
         setConfirmCartShow,
+        OrderDetail,
+        setOrderDetail,
+        resetCart,
       ]}
     >
       {props.children}

@@ -10,7 +10,7 @@ export const Checkout = (props) => {
     removefromcart,
     CartShow,
     setCartShow,
-    submitcart,
+    Submitcart,
     Checkout,
     setCheckout,
   ] = useContext(CartContext);
@@ -99,7 +99,7 @@ export const Checkout = (props) => {
         <Button
           variant="primary"
           // type="submit"
-          onClick={submitcart.bind(this, "m,n")}
+          onClick={Submitcart.bind(this, "m,n")}
           submitcart
         >
           Submit
