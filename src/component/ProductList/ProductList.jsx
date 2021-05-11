@@ -3,6 +3,7 @@ import { Button, Card, CardColumns, blockquote } from "react-bootstrap";
 import img5 from "././5.jpg";
 import axios from "axios";
 import { CartContext } from "./../../Context/CartContext";
+import "./../../App.css";
 const ProductList = (props) => {
   const [Cart, setCart, addToCart] = useContext(CartContext);
   const [Productlist, setProductlist] = useState([]);
@@ -23,7 +24,7 @@ const ProductList = (props) => {
       {Productlist.length
         ? Productlist.map((product) => (
             <Card key={product.ID}>
-              <Card.Img variant="top" src={img5} />
+              <Card.Img variant="top" className="photo" src={product.img} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
                 <Card.Text>{product.description}</Card.Text>
