@@ -61,8 +61,9 @@ export const CartProvider = (props) => {
     };
     console.log("...formto save...", JSON.stringify(formdata));
     axios
-      .post("http://localhost:8080/saveorder", JSON.stringify(formdata))
+      .post("https://fishord.herokuapp.com/saveorder", JSON.stringify(formdata))
       .then((response) => {
+        console.log("------response.data-----", response.data);
         OrderDetail.push(response.data);
         setConfirmCartShow(true);
         setCart([]);
