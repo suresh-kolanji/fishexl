@@ -29,7 +29,7 @@ const Header = (props) => {
         <Nav className="bg-light justify-content-between">
           <Nav.Link href="#home">
             {" "}
-            <h1> Fish Exclusive</h1>
+            <h1> Fishclusive</h1>
           </Nav.Link>
         </Nav>
         <Form inline>

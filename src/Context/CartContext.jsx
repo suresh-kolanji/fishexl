@@ -11,14 +11,15 @@ export const CartProvider = (props) => {
   const [OrderDetail, setOrderDetail] = useState([]);
   const addToCart = (product) => {
     console.log("------add to cart -----", product);
+    console.log("------add to cart --id---", product.ID);
     setCart((previousState) => [
       ...previousState,
-      { id: product.id, qty: 5, product: product },
+      { ID: product.ID, qty: 5, product: product },
     ]);
   };
 
   const removefromcart = (product) => {
-    const lCart = Cart.filter((item) => item.id !== product.id);
+    const lCart = Cart.filter((item) => item.ID !== product.ID);
     setCart(lCart);
   };
 
@@ -33,7 +34,7 @@ export const CartProvider = (props) => {
     var i;
     for (i = 0; i < Cart.length; i++) {
       const st = {
-        ItemID: Cart[i].id,
+        ItemID: Cart[i].ID,
         ItemName: Cart[i].product.name,
         ItemDesc: Cart[i].product.description,
         Qty: Cart[i].qty,
