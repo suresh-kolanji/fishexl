@@ -7,6 +7,7 @@ import {
   Row,
   Col,
   Container,
+  Image,
 } from "react-bootstrap";
 import { CartContext } from "./../../Context/CartContext";
 import delicon from "./../images/delete.svg";
@@ -50,7 +51,10 @@ const Cart = (props) => {
                   <ListGroup.Item>
                     <Container fluid>
                       <Row>
-                        <Col> {i + 1}</Col>
+                        <Col sm={1}> {i + 1}</Col>
+                        <Col>
+                          <Image src={Ca.product.img} thumbnail />
+                        </Col>
                         <Col>{Ca.product.name}</Col>
                         <Col>{Ca.product.description}</Col>
                         <Col>{Ca.product.constprice}</Col>
